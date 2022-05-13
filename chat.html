@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Messenger</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="chatContainer">
+            <div class="messages">
+                <!-- this is how the messages should be like:
+                    <div class="message"><span id="messageName">King</span> <span id="messageTime">&#32;19:20</span><br>
+                    <span id="messageMessage">Hello</span>
+                    </div> 
+                -->
+            </div>
+        </div>
+        <div class="onlineUsers" id="online">
+            <h1 id="onlineH1">Online Users</h1>
+            <div class="users">
+
+            </div>
+        </div>
+        <div class="formWrapper">
+            <form action="#" id="sendForm">
+                <input id='messageInput' type="text" placeholder="“Fortune favors the bold.” - Virgil.">
+                <button id='sendButton' type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://fierce-ridge-30030.herokuapp.com/socket.io/socket.io.js"></script>
+<script src="./dist/bundle.js"></script>
+
+</html>
