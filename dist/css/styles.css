@@ -1,0 +1,144 @@
+* {
+    font-family: Inter;
+  }
+  
+  body {
+    opacity: 1;
+    background-color: #242525;
+    margin: none;
+  }
+  
+  p {
+    color: aliceblue;
+    font-size: medium;
+  }
+  
+  label {
+    color: aliceblue;
+    font-size: large;
+  }
+  
+  .chatContainer {
+    display: flex;
+    float: left;
+    width: 70%;
+    height: 82vh;
+    border-right: 3px solid rgb(43, 43, 46);
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  
+  .messages {
+    display: block;
+    float: left;
+    padding-top: 15px;
+    /* padding-left: 20px; */
+  }
+  
+  #messageName {
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+  }
+  
+  #messageTime {
+    font-size: medium;
+  }
+  
+  #messageMessage {
+    font-size: x-large;
+  }
+  
+  .message {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    padding: 5px;
+    color: aliceblue;
+  }
+  
+  .message:hover {
+    background-color: #535757;
+  }
+  
+  .input {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #messageInput {
+    font-family: Inter;
+    opacity: 1;
+    border: none;
+    /* margin-top: 10px; */
+    width: 85%;
+    height: auto;
+    font-size: large;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+  }
+  
+  #messageInput::placeholder {
+    font-family: Inter;
+    opacity: 1;
+  }
+  
+  #sendButton {
+    float: right;
+    /* margin-top: 10px; */
+    margin-right: 5px;
+    cursor: pointer;
+    width: 13%;
+    height: 50px;
+  }
+  
+  .onlineUsers {
+    /* display: grid;
+      grid-template-columns: 0.9fr; */
+    width: 29%;
+    height: 82vh;
+    overflow-y: auto;
+  }
+  
+  .onlineUsers p {
+    font-size: large;
+    color: aliceblue;
+    padding-left: 10px;
+    width: auto;
+  }
+  
+  .onlineUsers p:hover {
+    transition: 0.35s;
+    background-color: #535757;
+  }
+  
+  #onlineH1 {
+    color: white;
+    margin-left: 150px;
+    font-size: x-large;
+  }
+  
+  /* index.html */
+  
+  #errLabel {
+    color: red;
+  }
+  
+  #loginFormWrapper {
+    padding: 20px;
+    padding-top: 150px;
+    height: 20%;
+    display: grid;
+    place-items: center;
+  }
+  
+  #loginFormWrapper input {
+    width: 500px;
+    border: none;
+  }
+  
+  #loginFormWrapper button {
+    width: 150px;
+    border: none;
+  }
