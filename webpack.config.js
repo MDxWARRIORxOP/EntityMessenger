@@ -2,10 +2,13 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./js/client.js",
+  entry: {
+    client: "./js/client.js",
+    login: "./js/login.js",
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    // filename: "main.js",
   },
   watch: false,
   experiments: {
