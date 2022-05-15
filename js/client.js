@@ -3,7 +3,7 @@
 /* global constants */
 import { nanoid } from "nanoid";
 
-const socket = io("http://localhost:5600");
+const socket = io("https://fierce-ridge-30030.herokuapp.com/");
 const qs = require("qs");
 
 const form = document.getElementById("sendForm");
