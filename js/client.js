@@ -1,100 +1,153 @@
 /* TODO: 1. add users support, 2. private dms */
 
 /* global constants */
-const socket = io("https://fierce-ridge-30030.herokuapp.com/");
+import { nanoid } from "nanoid";
+
+const socket = io("http://localhost:5600");
 const qs = require("qs");
 
 const form = document.getElementById("sendForm");
 const messageInput = document.getElementById("messageInput");
-const messageContainer = document.querySelector(".messages");
 
+const messageContainer = document.querySelector(".messages");
 const onlineContainer = document.querySelector(".users");
 
-const users = {};
+const users = [];
 /* functions */
 
 form.addEventListener("submit", (site) => {
-  site.preventDefault();
-  const msg = messageInput.value;
+  try {
+    site.preventDefault();
+    const msg = messageInput.value;
 
-  appendMessage(user.name, msg);
+    appendMessage(user.name, msg);
 
-  socket.emit("sendMessage", {
-    name: user.name,
-    message: msg,
-    room: user.room,
-  });
+    socket.emit("sendMessage", {
+      name: user.name,
+      message: msg,
+      room: user.room,
+    });
 
-  messageInput.value = "";
+    messageInput.value = "";
+  } catch (e) {
+    console.error(e);
+  }
 });
 
 let appendMessage = (username, message) => {
-  if (!message.includes("has joined the chat!")) {
-    if (!message) {
-      return;
+  try {
+    if (!message.includes("has joined the chat!")) {
+      if (!message) {
+        return;
+      }
+
+      if (message.length > 85) {
+        window.alert("Please dont send msgs with more than 85 characters");
+        return;
+      }
     }
 
-    if (message.length > 85) {
-      window.alert("Please dont send msgs with more than 85 characters");
-      return;
-    }
+    let divElement = document.createElement("div");
+    divElement.classList.add("message");
+
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+    let time = `${hours}:${minutes}`;
+
+    let id = nanoid();
+    // sorry for messy html
+    let divText = `
+    <span id="messageName">${username}</span>
+    &nbsp;
+    <span id="messageTime">&#32; at ${time}
+    </span>
+    &nbsp;&nbsp;
+    <button id="editButton" onclick="editButtonEvent()">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button id="deleteButton" onclick='deleteButtonEvent()'>
+      <i class="fa-solid fa-trash"></i>
+    </button>
+    <br>
+    <span id="messageMessage">${message}</span>`;
+
+    divElement.innerHTML = divText;
+
+    messageContainer.append(divElement);
+  } catch (e) {
+    console.error(e);
   }
-
-  let divElement = document.createElement("div");
-  divElement.classList.add("message");
-
-  let date = new Date();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-
-  let time = `${hours}:${minutes}`;
-
-  let divText = `<span id="messageName">${username}</span> <span id="messageTime">&#32; at ${time}</span><br>
-  <span id="messageMessage">${message}</span>`;
-
-  divElement.innerHTML = divText;
-
-  messageContainer.append(divElement);
 };
 
 let addToOnline = (username) => {
-  let pElement = document.createElement("p");
-  pElement.innerHTML = username;
+  try {
+    let liElement = document.createElement("li");
+    liElement.innerText = username;
 
-  onlineContainer.append(pElement);
+    liElement.classList.add("liElement");
+
+    onlineContainer.append(liElement);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
-/* getting the users name */
-let locationSearchArr = location.search.split("?");
-let usernameAndRoomObj = qs.parse(locationSearchArr[1]);
-let usernameAndRoomObjStringified = qs.stringify(usernameAndRoomObj);
+let getUser = () => {
+  try {
+    let locationSearchArr = location.search.split("?");
+    let usernameAndRoomObj = qs.parse(locationSearchArr[1]);
+    let usernameAndRoomObjStringified = qs.stringify(usernameAndRoomObj);
 
-let usernameAndRoomArr = usernameAndRoomObjStringified.split("&");
+    let usernameAndRoomArr = usernameAndRoomObjStringified.split("&");
 
-let usernameArr = usernameAndRoomArr[0].split("=");
-let userRoomArr = usernameAndRoomArr[1].split("=");
+    let usernameArr = usernameAndRoomArr[0].split("=");
+    let userRoomArr = usernameAndRoomArr[1].split("=");
 
-let username = usernameArr[1];
-let userRoom = userRoomArr[1];
+    let username = usernameArr[1];
+    let userRoom = userRoomArr[1];
 
-/* creating the user variable */
-const user = {
-  name: username,
-  room: userRoom,
-  id: socket.id,
+    const user = {
+      name: username,
+      room: userRoom,
+    };
+
+    return user;
+  } catch (e) {
+    console.error(`error: ${e}`);
+    return "someName", "someRoom";
+  }
 };
 
+/* getting the user */
+const user = getUser();
+users.push(user);
+
+// socket.io stuff
 socket.emit("newUserJoined", user);
 
 socket.on("userJoin", (user) => {
-  appendMessage("Team Yayai", `${user.name} has joined the chat!`);
-  addToOnline(user.name);
+  try {
+    appendMessage("Team Yayai", `${user.name} has joined the chat!`);
+    addToOnline(user.name);
+  } catch (e) {
+    console.error(e);
+  }
 });
 
 socket.on("userLeave", (userName) => {
-  appendMessage("Team Yayai", `${userName} has left the chat!`);
+  try {
+    appendMessage("Team Yayai", `${userName} has left the chat!`);
+  } catch (e) {
+    console.error(e);
+  }
 });
 
 socket.on("receiveMessage", (data) => {
-  appendMessage(data.name, data.message);
+  try {
+    appendMessage(data.name, data.message);
+  } catch (e) {
+    console.error(e);
+  }
 });
