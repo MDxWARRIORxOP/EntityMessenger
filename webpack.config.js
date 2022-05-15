@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist/js"),
     // filename: "main.js",
   },
-  watch: true,
+  watch: false,
   experiments: {
     topLevelAwait: true,
   },
