@@ -193,49 +193,53 @@ const login = () => {
                 loginWithEmailAndPassword(e);
               }}
             >
-              <label htmlFor="email">Email: </label> &#160;{" "}
-              <input
-                type="email"
-                name="password"
-                className={styles.emailInput}
-                placeholder="Email"
-                autoComplete="username"
-                id="emailInput"
-                required
-              />
-              <br />
-              <label htmlFor="password">Password: </label> &#160;{" "}
-              <input
-                type="password"
-                name="password"
-                className={styles.passwordInput}
-                placeholder="Password"
-                autoComplete="current-password"
-                id="passwordInput"
-                required
-                minLength="6"
-                maxLength="12"
-              />
-              <br />
-              <button type="submit" className={styles.loginButton}>
-                Login
-              </button>
-              <p>
-                Don&apos;t have an account?&#160;
-                <span className="underline">
-                  <Link href="/signup">Signup instead.</Link>
-                </span>
-              </p>
-              <p>
-                Forgot password?{" "}
-                <span className="underline">
-                  <Link href="/resetPassword">Reset Password.</Link>
-                </span>
-              </p>
-              <p id="errLabel"></p>
+              <>
+                <label htmlFor="email">Email: </label> &#160;{" "}
+                <input
+                  type="email"
+                  name="password"
+                  className={styles.emailInput}
+                  placeholder="Email"
+                  autoComplete="username"
+                  id="emailInput"
+                  required
+                />
+                <br />
+                <label htmlFor="password">Password: </label> &#160;{" "}
+                <input
+                  type="password"
+                  name="password"
+                  className={styles.passwordInput}
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  id="passwordInput"
+                  required
+                  minLength="6"
+                  maxLength="12"
+                />
+                <br />
+                <button type="submit" className={styles.loginButton}>
+                  Login
+                </button>
+                <p>
+                  <>
+                    Don&apos;t have an account?&#160;
+                    <span className="underline">
+                      <Link href="/signup">Signup instead.</Link>
+                    </span>
+                  </>
+                </p>
+                <p>
+                  <>
+                    Forgot password?{" "}
+                    <span className="underline">
+                      <Link href="/resetPassword">Reset Password.</Link>
+                    </span>
+                  </>
+                </p>
+                <p id="errLabel"></p>
+              </>
             </form>
-
-            <Link href="/chat" id="changeLink"></Link>
           </>
         </div>
         <div className={styles.right}>
@@ -273,6 +277,9 @@ const login = () => {
             </div>
           </>
         </div>
+        <Link href="/chat" id="changeLink">
+          <></>
+        </Link>
       </>
     </div>
   );
