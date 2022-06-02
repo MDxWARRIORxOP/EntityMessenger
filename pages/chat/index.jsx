@@ -4,8 +4,10 @@ const index = () => {
   return (
     <div className={Styles.container}>
       <div>
-        <h1>Page in development</h1>
-        <h2>Please visit later.</h2>
+        <>
+          <h1>Page in development</h1>
+          <h2>Please visit later.</h2>
+        </>
       </div>
     </div>
   );
