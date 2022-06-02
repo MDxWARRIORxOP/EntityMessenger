@@ -177,98 +177,104 @@ const loginWithTwitter = async (e) => {
 
 const login = () => {
   return (
-    <>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <>
         <Head>
           <title>Login</title>
         </Head>
 
         <div className={styles.left}>
-          <h1>Login with email and password</h1>
+          <>
+            <h1>Login with email and password</h1>
 
-          <form
-            action="#"
-            onSubmit={(e) => {
-              loginWithEmailAndPassword(e);
-            }}
-          >
-            <label htmlFor="email">Email: </label> &#160;{" "}
-            <input
-              type="email"
-              name="password"
-              className={styles.emailInput}
-              placeholder="Email"
-              autoComplete="username"
-              id="emailInput"
-              required
-            />
-            <br />
-            <label htmlFor="password">Password: </label> &#160;{" "}
-            <input
-              type="password"
-              name="password"
-              className={styles.passwordInput}
-              placeholder="Password"
-              autoComplete="current-password"
-              id="passwordInput"
-              required
-              minLength="6"
-              maxLength="12"
-            />
-            <br />
-            <button type="submit" className={styles.loginButton}>
-              Login
-            </button>
-            <p>
-              Don&apos;t have an account?&#160;
-              <span className="underline">
-                <Link href="/signup">Signup instead.</Link>
-              </span>
-            </p>
-            <p>
-              Forgot password?{" "}
-              <span className="underline">
-                <Link href="/resetPassword">Reset Password.</Link>
-              </span>
-            </p>
-            <p id="errLabel"></p>
-          </form>
+            <form
+              action="#"
+              onSubmit={(e) => {
+                loginWithEmailAndPassword(e);
+              }}
+            >
+              <label htmlFor="email">Email: </label> &#160;{" "}
+              <input
+                type="email"
+                name="password"
+                className={styles.emailInput}
+                placeholder="Email"
+                autoComplete="username"
+                id="emailInput"
+                required
+              />
+              <br />
+              <label htmlFor="password">Password: </label> &#160;{" "}
+              <input
+                type="password"
+                name="password"
+                className={styles.passwordInput}
+                placeholder="Password"
+                autoComplete="current-password"
+                id="passwordInput"
+                required
+                minLength="6"
+                maxLength="12"
+              />
+              <br />
+              <button type="submit" className={styles.loginButton}>
+                Login
+              </button>
+              <p>
+                Don&apos;t have an account?&#160;
+                <span className="underline">
+                  <Link href="/signup">Signup instead.</Link>
+                </span>
+              </p>
+              <p>
+                Forgot password?{" "}
+                <span className="underline">
+                  <Link href="/resetPassword">Reset Password.</Link>
+                </span>
+              </p>
+              <p id="errLabel"></p>
+            </form>
 
-          <Link href="/chat" id="changeLink"></Link>
+            <Link href="/chat" id="changeLink"></Link>
+          </>
         </div>
         <div className={styles.right}>
-          <div className={styles.loginButtons}>
-            <h1>Login using an auth provider</h1>
-            <button
-              onClick={(e) => {
-                loginWithGoogle(e);
-              }}
-              className={styles.authButton}
-            >
-              Login with Google
-            </button>
-            <br />
-            <button
-              className={styles.authButton}
-              onClick={(e) => {
-                loginWithGithub(e);
-              }}
-            >
-              Login with Github
-            </button>
-            <br />
-            <button
-              className={styles.authButton}
-              onClick={(e) => {
-                loginWithTwitter(e);
-              }}
-            >
-              Login with Twitter
-            </button>
-          </div>
+          <>
+            <div className={styles.loginButtons}>
+              <>
+                <h1>Login using an auth provider</h1>
+                <button
+                  onClick={(e) => {
+                    loginWithGoogle(e);
+                  }}
+                  className={styles.authButton}
+                >
+                  Login with Google
+                </button>
+                <br />
+                <button
+                  className={styles.authButton}
+                  onClick={(e) => {
+                    loginWithGithub(e);
+                  }}
+                >
+                  Login with Github
+                </button>
+                <br />
+                <button
+                  className={styles.authButton}
+                  onClick={(e) => {
+                    loginWithTwitter(e);
+                  }}
+                >
+                  Login with Twitter
+                </button>
+              </>
+            </div>
+          </>
         </div>
-      </div>
-    </>
+      </>
+    </div>
   );
 };
 
