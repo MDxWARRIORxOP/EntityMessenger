@@ -1,0 +1,13 @@
+.container {
+  height: 97vh;
+  background-image: url("../public/404Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  opacity: 1;
+}
+
+.text {
+  padding-top: 150px;
+  padding-left: 50px;
+}

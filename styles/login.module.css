@@ -1,0 +1,70 @@
+.container {
+  height: 97vh;
+  background-image: url("../public/loginBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  opacity: 1;
+}
+
+.left {
+  float: left;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+.emailInput {
+  width: 300px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.emailInput:active {
+  outline: none;
+  border: none;
+}
+
+.passwordInput {
+  border: none;
+  outline: none;
+  width: 300px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 11px;
+}
+
+.passwordInput:active {
+  outline: none;
+  border: none;
+}
+
+.loginButton {
+  padding: 5px;
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 180px;
+  outline: none;
+  border: none;
+}
+
+.authButton {
+  margin-top: 30px;
+  margin-left: 0px;
+  width: 300px;
+  padding: 10px;
+
+  border: none;
+  outline: none;
+}
+
+.right {
+  float: right;
+}
+
+.loginButtons {
+  padding-top: 20px;
+  padding-right: 10px;
+}

@@ -1,0 +1,42 @@
+.mainInHome {
+  padding-left: 0px;
+  margin: 0px;
+
+  height: 93vh;
+  background-image: url("../public/homeBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  opacity: 1;
+
+  border-bottom: 3px solid grey;
+}
+
+.text {
+  padding: 50px;
+}
+
+/* navbar */
+.nav {
+  display: flex;
+  list-style-type: none;
+  padding-right: 50px;
+  background-color: black;
+  justify-content: end;
+}
+
+.navLink {
+  padding-right: 50px;
+}
+
+.nav li a {
+  text-decoration: none;
+}
+
+.left {
+  float: right;
+}
+
+.benefits {
+  padding-left: 50px;
+}

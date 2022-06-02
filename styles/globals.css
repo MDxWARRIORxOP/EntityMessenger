@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: rgb(43, 41, 41);
+  margin: 0px;
+  /* overflow-y: hidden; */
+  padding: 0px;
+}
+
+h1 {
+  color: aliceblue;
+  font-size: 30px;
+}
+
+h2 {
+  color: aliceblue;
+  font-size: 18px;
+}
+
+p {
+  font-size: 15px;
+  color: aliceblue;
+}
+
+li {
+  color: aliceblue;
+  font-size: medium;
+}
+
+label {
+  color: #f0f8ff;
+  font-size: large;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.openDiscordButton {
+  display: block;
+  box-sizing: border-box;
+  padding: 20px 45px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  position: relative;
+  /* overflow: hidden; */
+
+  background: white;
+  font-weight: 900;
+  color: black;
+
+  text-transform: uppercase;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.openDiscordButton:hover {
+  cursor: pointer;
+  /* box-shadow: 0 5px 25px 0.25px rgba(13, 45, 104, 0.4); */
+  box-shadow: 0 20px 100px 1px rgba(76, 75, 97, 0.4);
+  transform: translateY(-4px);
+}
+
+.openDiscordButton a {
+  color: black;
+}
+
+.entityImage {
+  float: right;
+  height: 500px;
+  width: 500px;
+  background-image: url(../public/EntityMessengerLogoBgRemoved500X500.png);
+  background-repeat: no-repeat;
+}
+
+.underline {
+  border-bottom: 2px solid white;
+}
+
+#hidden {
+  display: none;
+}
+
+.black {
+  color: white;
+}
