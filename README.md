@@ -1,1 +1,1 @@
-Official code for https://entity-messenger.tk
+Oficial frontend files of https://entity-messenger.tk

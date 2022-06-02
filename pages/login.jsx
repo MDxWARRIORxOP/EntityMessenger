@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Head from "next/head";
-import Script from "next/script";
 import styles from "../styles/login.module.css";
 import * as firebase from "../constants/firebase.js";
 
@@ -181,7 +180,6 @@ const login = () => {
     <div className={styles.container}>
       <Head>
         <title>Login</title>
-        <Script src="..\constants\fontawesome.js"></Script>
       </Head>
 
       <div className={styles.left}>
@@ -221,7 +219,7 @@ const login = () => {
             Login
           </button>
           <p>
-            Don't have an account?&#160;
+            Don&apos;t have an account?&#160;
             <span className="underline">
               <Link href="/signup">Signup instead.</Link>
             </span>
@@ -235,9 +233,8 @@ const login = () => {
           <p id="errLabel"></p>
         </form>
 
-        <a href="/chat" id="changeLink"></a>
+        <Link href="/chat" id="changeLink"></Link>
       </div>
-
       <div className={styles.right}>
         <div className={styles.loginButtons}>
           <h1>Login using an auth provider</h1>
@@ -247,7 +244,7 @@ const login = () => {
             }}
             className={styles.authButton}
           >
-            <i className="fa-brands fa-google"></i> Login with Google
+            Login with Google
           </button>
           <br />
           <button

@@ -21,7 +21,7 @@ export default function Home() {
           <h1>Entity Messenger</h1>
           <h2>
             Do you seriously still use Skype or Zoom? <br /> They worked well in
-            2018, but in 2022, <br /> it's time to upgrade to Entity Messenger!
+            2018, but in 2022, <br /> it&apos;s time to upgrade to Entity Messenger!
           </h2>
           <br />
           <Link href="/chat">
