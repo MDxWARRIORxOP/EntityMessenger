@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import Styles from "../styles/404.module.css";
+import Navbar from "../components/Navbar";
 
 const page = () => {
   return (
@@ -9,6 +10,7 @@ const page = () => {
         <Head>
           <title>404 page not found</title>
         </Head>
+        <Navbar />
         <div className={Styles.text}>
           <>
             <h1>OOPS... Page not found</h1>

@@ -1,13 +1,38 @@
-.container {
-  height: 94vh;
-  background-image: url("../public/chatBackground.jpg");
+.text {
+  padding-top: 20px;
 }
 
-.container h1 {
-  padding-top: 50px;
-  padding-left: 30px;
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container h2 {
-  padding-left: 30px;
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.left {
+  float: left;
+  display: grid;
+  grid-template-columns: auto;
+  margin: 10px;
+}
+
+.right {
+  float: right;
+}
+
+.createSpaceShip {
+  cursor: pointer;
+  color: white;
+  height: auto;
+  width: 50px;
+}
+
+.createSpaceShipButton {
+  border: none;
+  background-color: transparent;
 }

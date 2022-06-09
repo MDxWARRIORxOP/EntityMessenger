@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-
 import Logo from "../components/logo.jsx";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
@@ -18,6 +18,7 @@ export default function Home() {
             />
           </>
         </Head>
+        <Navbar />
         <div className={styles.mainInHome}>
           <>
             <Logo />

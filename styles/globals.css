@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(43, 41, 41);
+  background-color: #2b2929;
   margin: 0px;
   /* overflow-y: hidden; */
   padding: 0px;
@@ -88,5 +88,13 @@ a {
 }
 
 .black {
+  color: black;
+}
+
+.white {
   color: white;
+}
+
+.loadingAnimation {
+  padding-left: 350px;
 }

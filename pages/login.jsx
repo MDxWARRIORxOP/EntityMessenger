@@ -2,71 +2,41 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/login.module.css";
 import * as firebase from "../constants/firebase.js";
+import Navbar from "../components/Navbar";
 
 const auth = firebase.firebaseAuth.getAuth(firebase.app);
+const db = firebase.firebaseFirestore.getFirestore(firebase.app);
 
 const googleProvider = new firebase.firebaseAuth.GoogleAuthProvider();
 const githubProvider = new firebase.firebaseAuth.GithubAuthProvider();
 const twitterProvider = new firebase.firebaseAuth.TwitterAuthProvider();
 
-let showError = (error) => {
-  const AuthErrorCodes = {
-    WRONG_PASSWORD: "FirebaseError: Firebase: Error (auth/wrong-password).",
-    EMAIL_ALREADY_IN_USE:
-      "FirebaseError: Firebase: Error (auth/email-already-in-use).",
-    INTERNAL_ERROR: "FirebaseError: Firebase: Error (auth/internal-error).",
-    USER_NOT_FOUND: "FirebaseError: Firebase: Error (auth/user-not-found).",
-    MISSING_EMAIL: "FirebaseError: Firebase: Error (auth/missing-email).",
-    WEAK_PASSWORD:
-      "FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).",
-    INVALID_EMAIL: "FirebaseError: Firebase: Error (auth/invalid-email).",
-    ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIALS:
-      "FirebaseError: Firebase: Error (auth/account-exists-with-different-credential).",
-    POPUP_CLOSED_BY_USER:
-      "FirebaseError: Firebase: Error (auth/popup-closed-by-user).",
-    POPUP_BLOCKED: "FirebaseError: Firebase: Error (auth/popup-blocked).",
+let addUserData = (user) => {
+  const usersRef = firebase.firebaseFirestore.doc(db, "users", user.uid);
+  const userData = {
+    name: user.displayName,
+    emailVerified: user.emailVerified,
+    metadata: {
+      createdAt: user.metadata.creationTime,
+    },
+    phoneNumber: user.phoneNumber,
+    profilePicture: user.photoURL,
+    uid: user.uid,
+    servers: {},
   };
+  firebase.firebaseFirestore.setDoc(usersRef, userData, { merge: true });
+  console.log("user added");
+};
 
+let showError = () => {
   errLabel.style.color = "red";
+  errLabel.textContent = "Some error has occurred. Please try again later";
+};
 
-  if (error == AuthErrorCodes.WRONG_PASSWORD) {
-    errLabel.textContent = "Invalid password, please try again.";
-    return;
-  } else if (error == AuthErrorCodes.EMAIL_ALREADY_IN_USE) {
-    errLabel.textContent =
-      "Email already in use, please try a different email.";
-    return;
-  } else if (error == AuthErrorCodes.INTERNAL_ERROR) {
-    errLabel.textContent = "Internal error, please try again later.";
-    return;
-  } else if (error == AuthErrorCodes.USER_NOT_FOUND) {
-    errLabel.textContent =
-      "User not found, please try again with different credentials.";
-    return;
-  } else if (
-    error == AuthErrorCodes.MISSING_EMAIL ||
-    error == AuthErrorCodes.INVALID_EMAIL
-  ) {
-    errLabel.textContent = "Please enter a valid email.";
-    return;
-  } else if (error == AuthErrorCodes.WEAK_PASSWORD) {
-    errLabel.textContent = "Password should atleast have 6 characters.";
-    return;
-  } else if (
-    error == AuthErrorCodes.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIALS
-  ) {
-    errLabel.textContent = "Account already exists with different credentials.";
-    return;
-  } else if (error == AuthErrorCodes.POPUP_CLOSED_BY_USER) {
-    errLabel.textContent = "Popup closed, please try again.";
-    return;
-  } else if (error == AuthErrorCodes.POPUP_BLOCKED) {
-    errLabel.textContent =
-      "Popup blocked, please enable popups in your browser.";
-    return;
-  }
-
-  errLabel.textContent = error;
+let showErrorE = () => {
+  errLabel.style.color = "red";
+  errLabel.textContent =
+    "Some error has occurred. Try checking your credentials";
 };
 
 let showSuccess = (message) => {
@@ -75,21 +45,14 @@ let showSuccess = (message) => {
 
   errLabel.textContent = message;
 
-  setTimeout(() => {
-    const a = document.getElementById("changeLink");
-    a.click();
-  }, 2000);
+  firebase.firebaseAuth.onAuthStateChanged(auth, (user) => {
+    if (user) {
+      addUserData(user);
+      // a = document.getElementById("changeLink");
+      // a.click();
+    }
+  });
 };
-
-// const showCreateAccountModal = () => {
-//   return (
-//     <div className={styles.modal}>
-//       <h1>Account does not exist.</h1>
-//       <h2>Create one?</h2>
-//       <button>Yes</button>&#160;&#160;&#160;<button>Cancel</button>
-//     </div>
-//   );
-// };
 
 const loginWithEmailAndPassword = async (e) => {
   e.preventDefault();
@@ -106,9 +69,37 @@ const loginWithEmailAndPassword = async (e) => {
     );
     console.log(credentials);
     showSuccess("Logged in!");
+    return credentials;
   } catch (error) {
-    console.error("error:", error);
-    showError(e);
+    if (error == "FirebaseError: Firebase: Error (auth/user-not-found).") {
+      try {
+        let credentials =
+          await firebase.firebaseAuth.createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+        let username = alert(
+          "Please enter your username to create a new account: "
+        );
+
+        firebase.firebaseAuth.updateProfile(auth.currentUser, {
+          displayName: username,
+        });
+
+        console.log(credentials);
+        showSuccess("Logged in!");
+        return credentials;
+      } catch (e) {
+        console.log(e);
+        showErrorE();
+        return null;
+      }
+    }
+
+    console.error(error);
+    showErrorE();
+    return null;
   }
 };
 
@@ -129,7 +120,7 @@ const loginWithGoogle = async (e) => {
     showSuccess("successfully logged in!");
   } catch (e) {
     console.log(e);
-    showError(e);
+    showError();
   }
 };
 
@@ -150,7 +141,7 @@ const loginWithGithub = async (e) => {
     showSuccess("successfully logged in!");
   } catch (e) {
     console.log(e);
-    showError(e);
+    showError();
   }
 };
 
@@ -171,7 +162,7 @@ const loginWithTwitter = async (e) => {
     showSuccess("successfully logged in!");
   } catch (e) {
     console.log(e);
-    showError(e);
+    showError();
   }
 };
 
@@ -182,7 +173,7 @@ const login = () => {
         <Head>
           <title>Login</title>
         </Head>
-
+        <Navbar />
         <div className={styles.left}>
           <>
             <h1>Login with email and password</h1>
@@ -221,14 +212,6 @@ const login = () => {
                 <button type="submit" className={styles.loginButton}>
                   Login
                 </button>
-                <p>
-                  <>
-                    Don&apos;t have an account?&#160;
-                    <span className="underline">
-                      <Link href="/signup">Signup instead.</Link>
-                    </span>
-                  </>
-                </p>
                 <p>
                   <>
                     Forgot password?{" "}

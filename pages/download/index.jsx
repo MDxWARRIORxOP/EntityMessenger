@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/downloads.module.css";
 import Link from "next/link";
-
+import Navbar from "../../components/Navbar";
 import Logo from "../../components/logo";
 
 const index = () => {
@@ -11,6 +11,7 @@ const index = () => {
         <Head>
           <title>Downloads</title>
         </Head>
+        <Navbar />
         <div className={styles.left}>
           <Logo />
         </div>
