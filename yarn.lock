@@ -625,10 +625,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@react-three/fiber@^8.0.22":
-  version "8.0.22"
-  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.0.22.tgz#68c69ba7c0c4f5354562c5acfd5f0c9c64b9a64d"
-  integrity sha512-HkQR+SKm0Bi4qq9sxCV2rv2aXxEhWPcj52bLOCiW3WpF8sGJtmdc/pP4ih5gXwN7I5NMTa2eDeoSYkIPOwt1/g==
+"@react-three/fiber@^8.0.26":
+  version "8.0.26"
+  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.0.26.tgz#a7e271aedf8626e269346df865bcbb6aceb21e21"
+  integrity sha512-6svPl3YxuNsB9SKJry17rZcgDsF6sVNsY1DF2PrFKxtQk0p9CHAAEP4SczJaOgFlSUsePP78h/r83EsMMC+TVg==
   dependencies:
     "@babel/runtime" "^7.17.8"
     "@types/react-reconciler" "^0.26.7"
@@ -671,9 +671,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
+  version "18.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.13.tgz#0f5bd24a5f26593e04e450fe85ff43f51c1524ff"
+  integrity sha512-psqptIYQxGUFuGYwP3KCFVtPTkMpIcrqFmtKblWEUQhLuYLpHBwJkXhjp6eHfDM5IbyskY4x7qQpLedEsPkHlA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"

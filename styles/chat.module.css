@@ -1,5 +1,5 @@
 .text {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .main {
@@ -9,6 +9,7 @@
 }
 
 .bottom {
+  margin: 30px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -19,10 +20,17 @@
   display: grid;
   grid-template-columns: auto;
   margin: 10px;
+  border-right: 2px solid grey;
+  height: 100%;
 }
 
 .right {
   float: right;
+  display: grid;
+  grid-template-columns: auto;
+  margin: 10px;
+  border-left: 2px solid grey;
+  height: 100%;
 }
 
 .createSpaceShip {
@@ -33,6 +41,11 @@
 }
 
 .createSpaceShipButton {
+  border: none;
+  background-color: transparent;
+}
+
+.settingsButton {
   border: none;
   background-color: transparent;
 }

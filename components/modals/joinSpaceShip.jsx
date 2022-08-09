@@ -1,8 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import PropTypes from "prop-types";
 
-import ThreeScene from "../../three/main";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -59,7 +57,6 @@ const JoinSpaceShipModal = (props) => {
       return (
         <div className="container">
           <h1 style={{ position: "fixed", paddingLeft: "50px" }}>Add rooms</h1>
-            <ThreeScene />
         </div>
       );
     }
