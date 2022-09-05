@@ -36,3 +36,5 @@ util/config.json
 
 #vscode
 /.vscode/
+
+*/.env-local
