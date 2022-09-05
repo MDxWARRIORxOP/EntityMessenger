@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Styles from "../../styles/chat.module.css";
 import * as firebase from "../../util/firebase";
-import JoinSpaceShipModal from "../../components/modals/joinSpaceShip";
+import Image from "next/image";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ChatNav from "../../components/ChatNav";
 import img from "../../public/toBeUsed.png";
@@ -83,7 +83,11 @@ const index = () => {
                   className={Styles.spaceShipButton}
                   onClick={showSpaceShip}
                 >
-                  <img className="spaceShipLogo" src={img.src} />
+                  <Image
+                    className="spaceShipLogo"
+                    src={img.src}
+                    alt="SpaceShipLogo"
+                  />
                 </button>
               </div>
             </div>
