@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import Styles from "../styles/chatNav.module.css";
-import * as firebase from "../constants/firebase";
+import * as firebase from "../util/firebase";
 
 const auth = firebase.firebaseAuth.getAuth(firebase.app);
 
 const ChatNav = () => {
-  return (
-    <></>
-  );
+  return <></>;
 };
 
 export default ChatNav;

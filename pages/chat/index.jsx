@@ -5,10 +5,11 @@ import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Styles from "../../styles/chat.module.css";
-import * as firebase from "../../constants/firebase";
+import * as firebase from "../../util/firebase";
 import JoinSpaceShipModal from "../../components/modals/joinSpaceShip";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ChatNav from "../../components/ChatNav";
+import img from "../../public/toBeUsed.png";
 
 // fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +23,7 @@ const index = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  let currentUserPromise = new Promise((resolve, reject) => {
+  const currentUserPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (auth.currentUser) {
         resolve(auth.currentUser);
@@ -50,6 +51,11 @@ const index = () => {
       });
     });
 
+  // TODO:
+  const showSpaceShip = () => {
+    console.log("lmao not showing a spaceship.");
+  };
+
   return (
     <div id="container">
       <Head>
@@ -71,6 +77,15 @@ const index = () => {
                   className={Styles.createSpaceShip}
                 />
               </button>
+              {/* example spaceShip */}
+              <div className={Styles.spaceShip}>
+                <button
+                  className={Styles.spaceShipButton}
+                  onClick={showSpaceShip}
+                >
+                  <img className="spaceShipLogo" src={img.src} />
+                </button>
+              </div>
             </div>
             <div className={Styles.main}></div>
             <div className={Styles.right}>

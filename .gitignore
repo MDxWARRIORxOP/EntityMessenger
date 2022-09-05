@@ -28,8 +28,8 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# config files
+util/config.json
 
 # vercel
 .vercel

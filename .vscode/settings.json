@@ -1,6 +1,11 @@
 {
     "cSpell.words": [
+        "Firestore",
         "successfully"
     ],
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    "scm.alwaysShowRepositories": true,
+    "scm.alwaysShowActions": true,
+    "scm.countBadge": "all",
+    "scm.defaultViewMode": "tree"
 }

@@ -49,3 +49,22 @@
   border: none;
   background-color: transparent;
 }
+
+.spaceShip > button > img {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  /* background-image: url("../public/toBeUsed.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  opacity: 1; */
+
+  color: white;
+}
+
+.spaceShip > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
