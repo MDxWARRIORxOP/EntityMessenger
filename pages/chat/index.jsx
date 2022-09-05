@@ -5,7 +5,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Styles from "../../styles/chat.module.css";
-import * as firebase from "../../util/firebase";
+import { Auth } from "../../util/firebase";
 import Image from "next/image";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ChatNav from "../../components/ChatNav";
@@ -16,22 +16,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faGear } from "@fortawesome/free-solid-svg-icons";
 
 const index = () => {
-  // initializing auth
-  const auth = firebase.firebaseAuth.getAuth(firebase.app);
-
   // loading state
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const currentUserPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (auth.currentUser) {
-        resolve(auth.currentUser);
+      if (Auth.currentUser) {
+        resolve(Auth.currentUser);
       } else {
         setTimeout(() => {
-          if (auth.currentUser) return resolve(auth.currentUser);
+          if (Auth.currentUser) return resolve(Auth.currentUser);
           setTimeout(() => {
-            if (auth.currentUser) return resolve(auth.currentUser);
+            if (Auth.currentUser) return resolve(Auth.currentUser);
             reject("not logged in.");
           }, 1000);
         }, 1000);
@@ -106,7 +103,7 @@ const index = () => {
             <div className={Styles.bottom}>
               <div className={Styles.nav}>
                 <h2 className={Styles.name}>
-                  {auth.currentUser.displayName} &#160;&#160;&#160;
+                  {Auth.currentUser.displayName} &#160;&#160;&#160;
                   <button id="settingsButton" className={Styles.settingsButton}>
                     <FontAwesomeIcon icon={faGear} className="white" />
                   </button>
