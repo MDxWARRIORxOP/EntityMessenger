@@ -2,21 +2,20 @@ import { Auth } from "./firebase";
 import * as FireAuth from "firebase/auth";
 
 const GProvider = new FireAuth.GoogleAuthProvider();
-const GiProvider = new FireAuth.GithubAuthProvider()
+const GiProvider = new FireAuth.GithubAuthProvider();
 
 /**
- * 
- * @param {String} email 
- * @param {String} password 
- * @param {String} displayName 
+ *
+ * @param {String} email
+ * @param {String} password
+ * @param {String} displayName
  * @returns Firebase user
  */
 async function createUser(email, password, displayName) {
   return await FireAuth.createUserWithEmailAndPassword(Auth, email, password)
     .then(async function ({ user }) {
       // successfully created an account for the user
-      const user = user;
-      return await FireAuth.updateProfile(Auth.createUser, {
+      return await FireAuth.updateProfile(Auth.currentUser, {
         displayName,
       })
         .then(function (User) {
@@ -35,56 +34,67 @@ async function createUser(email, password, displayName) {
 }
 
 /**
- * 
- * @param {String} email 
- * @param {String} password 
+ *
+ * @param {String} email
+ * @param {String} password
  * @returns Firebase user
  */
 async function emailLogin(email, password) {
-    return await signInWithEmailAndPassword(Auth, email, password)
-    .then(function (userCredential) {
-        const user = userCredential.user;
-        return user;
+  return await signInWithEmailAndPassword(Auth, email, password)
+    .then(async function (userCredential) {
+      const user = userCredential.user;
+      await window.localStorage.setItem("user", JSON.stringify(userCredential));
+      return user;
     })
     .catch(function (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        return errorCode + ";" + errorMessage
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      return errorCode + ";" + errorMessage;
     });
 }
 
 /**
- * 
+ *
  * @returns Firebase user
  */
 async function googleLogin() {
-  return await FireAuth.signInWithPopup(Auth, GProvider).then(function (result) {
-    const credentials =
-      await FireAuth.GoogleAuthProvider.credentialFromResult(result);
-    await window.localStorage.setItem("credentials", JSON.stringify(credentials));
+  return await FireAuth.signInWithPopup(Auth, GProvider)
+    .then(async function (result) {
+      const credentials =
+        await FireAuth.GoogleAuthProvider.credentialFromResult(result);
+      await window.localStorage.setItem(
+        "credentials",
+        JSON.stringify(credentials)
+      );
 
-    return result.user;
-  }).catch(e => {
-    console.error(e)
-    return e
-  })
+      return result.user;
+    })
+    .catch((e) => {
+      console.error(e);
+      return e;
+    });
 }
 
 /**
- * 
+ *
  * @returns Firebase user
  */
- async function githubLogin() {
-    return await FireAuth.signInWithPopup(Auth, GiProvider).then(function (result) {
+async function githubLogin() {
+  return await FireAuth.signInWithPopup(Auth, GiProvider)
+    .then(async function (result) {
       const credentials =
         await FireAuth.GithubAuthProvider.credentialFromResult(result);
-      await window.localStorage.setItem("credentials", JSON.stringify(credentials));
-  
+      await window.localStorage.setItem(
+        "credentials",
+        JSON.stringify(credentials)
+      );
+
       return result.user;
-    }).catch(e => {
-      console.error(e)
-      return e
     })
+    .catch((e) => {
+      console.error(e);
+      return e;
+    });
 }
 
 export { createUser, emailLogin, googleLogin, githubLogin };
