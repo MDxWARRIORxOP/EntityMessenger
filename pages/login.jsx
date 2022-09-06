@@ -77,7 +77,7 @@ const login = function () {
         <h1>Login with email and password</h1>
 
         <form action="#" onSubmit={handleEmailLogin}>
-          <label htmlFor="email">Email: </label> &#160;{" "}
+          <label htmlFor="email">Email: </label>
           <input
             type="email"
             name="password"
@@ -88,7 +88,7 @@ const login = function () {
             required
           />
           <br />
-          <label htmlFor="password">Password: </label> &#160;{" "}
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             name="password"
