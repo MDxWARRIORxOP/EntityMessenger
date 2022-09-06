@@ -16,19 +16,40 @@ import {
 const login = function () {
   const router = useRouter();
 
+  function redirect() {
+    router.query.ref == "chat" ? router.push("/chat") : router.push("/");
+  }
+
   function handleEmailLogin(e) {
     e.preventDefault();
-    console.log(e);
+
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+    const error = emailLogin(email, password).then(function () {
+      redirect();
+    });
+
+    error ? showError() : "";
   }
 
   function handleLoginGithub(e) {
     e.preventDefault();
-    console.log(e);
+
+    const error = githubLogin().then(function () {
+      redirect();
+    });
+
+    error ? showError() : "";
   }
 
   function handleLoginGoogle(e) {
     e.preventDefault();
-    console.log(e);
+
+    const error = googleLogin().then(function () {
+      redirect();
+    });
+
+    error ? showError() : "";
   }
 
   function showError(e) {

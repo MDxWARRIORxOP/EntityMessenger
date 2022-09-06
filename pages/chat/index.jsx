@@ -15,7 +15,7 @@ import img from "../../public/toBeUsed.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faGear } from "@fortawesome/free-solid-svg-icons";
 
-const index = () => {
+function index() {
   // loading state
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -26,9 +26,11 @@ const index = () => {
         resolve(Auth.currentUser);
       } else {
         setTimeout(() => {
-          if (Auth.currentUser) return resolve(Auth.currentUser);
+          if (Auth.currentUser)
+            return resolve(Auth.currentUser);
           setTimeout(() => {
-            if (Auth.currentUser) return resolve(Auth.currentUser);
+            if (Auth.currentUser)
+              return resolve(Auth.currentUser);
             reject("not logged in.");
           }, 1000);
         }, 1000);
@@ -61,7 +63,6 @@ const index = () => {
       {loading ? (
         <LoadingAnimation show={loading} />
       ) : (
-        <>
           <div className={Styles.container}>
             <ChatNav />
             <div className={Styles.left}>
@@ -71,8 +72,7 @@ const index = () => {
               >
                 <FontAwesomeIcon
                   icon={faSquarePlus}
-                  className={Styles.createSpaceShip}
-                />
+                  className={Styles.createSpaceShip} />
               </button>
               {/* example spaceShip */}
               <div className={Styles.spaceShip}>
@@ -83,8 +83,7 @@ const index = () => {
                   <Image
                     className="spaceShipLogo"
                     src={img.src}
-                    alt="SpaceShipLogo"
-                  />
+                    alt="SpaceShipLogo" />
                 </button>
               </div>
             </div>
@@ -96,8 +95,7 @@ const index = () => {
               >
                 <FontAwesomeIcon
                   icon={faSquarePlus}
-                  className={Styles.createSpaceShip}
-                />
+                  className={Styles.createSpaceShip} />
               </button>
             </div>
             <div className={Styles.bottom}>
@@ -111,10 +109,9 @@ const index = () => {
               </div>
             </div>
           </div>
-        </>
       )}
     </div>
   );
-};
+}
 
 export default index;

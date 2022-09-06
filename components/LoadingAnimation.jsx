@@ -1,22 +1,20 @@
 import PropTypes from "prop-types";
 
-const LoadingAnimation = (props) => {
+function LoadingAnimation(props) {
   if (props.show) {
     return (
-      <>
-        <video
-          autoPlay
-          loop
-          muted
-          src="/EntityLoading.mp4"
-          className="loadingAnimation"
-        />
-      </>
+      <video
+        autoPlay
+        loop
+        muted
+        src="/EntityLoading.mp4"
+        className="loadingAnimation"
+      />
     );
   } else {
     return "";
   }
-};
+}
 
 LoadingAnimation.defaultProps = {
   show: PropTypes.bool,
